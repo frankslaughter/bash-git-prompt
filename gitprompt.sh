@@ -80,13 +80,15 @@ function git_prompt_config()
   fi
 
   # Various variables you might want for your PS1 prompt instead
-  local Time12a="\$(date +%H:%M)"
+  local Time12a="\D{%a, %d %b %Y %T}"
+  # local Time12a="\$(date +%H:%M)"
   # local Time12a="(\$(date +%H:%M:%S))"
   # local Time12a="(\@))"
+  local User="\u@\h"
   local PathShort="\w"
 
   if [ "x${GIT_PROMPT_START}" == "x" ]; then
-    PROMPT_START="${Yellow}${PathShort}${ResetColor}"
+    PROMPT_START="${BoldGreen}${User}${Yellow}:${PathShort}${ResetColor}"
   else
     PROMPT_START="${GIT_PROMPT_START}"
   fi
